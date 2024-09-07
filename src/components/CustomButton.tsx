@@ -4,7 +4,7 @@ import {StyleSheet} from 'react-native';
 
 type CustomButtonProp = {
   title: string;
-  onPress: () => {};
+  onPress: () => {} | any;
 };
 
 export const CustomButton = ({title, onPress}: CustomButtonProp) => {

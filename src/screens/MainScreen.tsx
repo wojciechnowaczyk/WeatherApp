@@ -6,11 +6,21 @@ import {CustomButton} from '../components/CustomButton';
 import {Text, useTheme, Input} from '@rneui/themed';
 import {locales} from '../locales';
 import {CustomTheme} from '../models/theme';
+import {getWeatherByCity} from '../api';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Main Screen'>;
 
 export const MainScreen: React.FC<Props> = ({navigation}) => {
   const {theme} = useTheme();
+
+  const handleNextBtn = () => {
+    getWeatherByCity('Warsaw').then(weatherData => {
+      async () => console.log('next');
+      navigation.navigate('Weather Details Screen', {
+        weatherDetails: weatherData,
+      });
+    });
+  };
 
   return (
     <View style={styles.container(theme)}>
@@ -22,10 +32,7 @@ export const MainScreen: React.FC<Props> = ({navigation}) => {
         inputContainerStyle={styles.input(theme)}
         // renderErrorMessage={true}
       />
-      <CustomButton
-        title={locales.NEXT}
-        onPress={async () => navigation.navigate('Weather Details Screen')}
-      />
+      <CustomButton title={locales.NEXT} onPress={handleNextBtn} />
       <CustomButton
         title={locales.ADD_AS_FAVOURITE}
         onPress={async () => navigation.navigate('Weather Details Screen')}
