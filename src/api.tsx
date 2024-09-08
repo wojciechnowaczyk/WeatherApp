@@ -13,7 +13,6 @@ export async function getWeatherByCity(city: string, tempUnit: TempUnits) {
     `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${convertUnits()}&appid=${apiKey}`,
   );
   const data = await response.json();
-  console.log(data);
 
   const weather: Weather = {
     city: city,

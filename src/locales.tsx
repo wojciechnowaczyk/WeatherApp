@@ -8,4 +8,5 @@ export const locales = {
   SET_TEMP_UNITS: 'Set temperature units',
   TEMP_UNIT_C: 'C',
   TEMP_UNIT_F: 'F',
+  FAVOURITE_CITIES: 'Favourite Cities:',
 };
