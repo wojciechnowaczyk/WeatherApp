@@ -4,4 +4,8 @@ export const locales = {
   PLEASE_ENTER_A_CITY: 'Please enter a city',
   NEXT: 'Next',
   ADD_AS_FAVOURITE: 'Add as favourite',
+  BACK: 'Back',
+  SET_TEMP_UNITS: 'Set temperature units',
+  TEMP_UNIT_C: 'C',
+  TEMP_UNIT_F: 'F',
 };

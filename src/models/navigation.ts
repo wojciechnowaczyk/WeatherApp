@@ -3,7 +3,7 @@ import { Weather } from './weather';
 
 export type RootStackParamList = {
   'Main Screen': undefined;
-  'Weather Details Screen': {weatherDetails: Weather};
+  'Weather Details Screen': { weatherData: Weather };
 };
 
 export type MainScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Main Screen'>;
