@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../models/navigation';
 import {CustomButton} from '../components/CustomButton';
-import {Text, useTheme, Input, Button} from '@rneui/themed';
+import {Text, useTheme, Button} from '@rneui/themed';
 import {locales} from '../locales';
 import {getWeatherByCity} from '../api';
 import {OutlinedButton} from '../components/OutlinedButton';
@@ -88,20 +88,15 @@ export const MainScreen: React.FC<Props> = ({navigation}) => {
     saveCitiesInStorage(updatedCities);
   };
 
-  const renderFavCities = ({item}) => (
+  const renderFavCities = ({item}: {item: string}) => (
     <View style={styles.listItem}>
       <Button
-        containerStyle={{
-          width: 100,
-          marginHorizontal: 50,
-          marginVertical: 10,
-        }}
+        containerStyle={styles.listItemEl}
         title={item}
         type="clear"
-        titleStyle={{color: theme.colors.secondary}}
         onPress={() => handleNextBtn(item)}
       />
-      <OutlinedButton title="X" onPress={() => removeFavCity(item)} />
+      <OutlinedButton isIconBtn onPress={() => removeFavCity(item)} />
     </View>
   );
 
@@ -154,5 +149,10 @@ const styles = {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  listItemEl: {
+    width: 100,
+    marginHorizontal: 50,
+    marginVertical: 10,
   },
 };

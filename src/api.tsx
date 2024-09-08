@@ -9,20 +9,12 @@ export async function getWeatherByCity(city: string, tempUnit: TempUnits) {
   const convertUnits = (): Metric => {
     return tempUnit === 'C' ? 'metric' : 'imperial';
   };
-  console.log(
-    `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${convertUnits()}&appid=${apiKey}`,
-  );
   try {
     const response = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${convertUnits()}&appid=${apiKey}`,
     );
 
-    // if (!response.ok) {
-    //   throw new Error(`HTTP error! Status: ${response.status}`);
-    // }
-
     const data = await response.json();
-    console.log(data);
 
     if (!data?.main || !data?.weather || !Array.isArray(data.weather)) {
       throw new Error('Invalid data format');

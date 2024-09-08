@@ -1,24 +1,27 @@
-import {Button, useTheme} from '@rneui/themed';
+import {Button, Icon} from '@rneui/themed';
 import React from 'react';
 import {StyleSheet} from 'react-native';
 
 type OutlinedButtonProps = {
-  title: string;
+  title?: string;
   onPress: () => void;
+  isIconBtn?: boolean;
 };
 
-export const OutlinedButton = ({title, onPress}: OutlinedButtonProps) => {
-  const {theme} = useTheme();
-
+export const OutlinedButton = ({
+  title,
+  onPress,
+  isIconBtn,
+}: OutlinedButtonProps) => {
   return (
     <Button
-      title={title}
-      buttonStyle={{...styles.button, borderColor: theme.colors.error}}
+      title={title ?? ''}
+      buttonStyle={{...styles.button}}
       type="outline"
-      titleStyle={{color: theme.colors.error}}
       containerStyle={styles.container}
-      onPress={onPress}
-    />
+      onPress={onPress}>
+      {isIconBtn && <Icon raised name="trash" type="font-awesome" />}
+    </Button>
   );
 };
 
@@ -31,8 +34,5 @@ const styles = StyleSheet.create({
   container: {
     marginHorizontal: 10,
     marginVertical: 10,
-  },
-  title: {
-    color: 'rgba(78, 116, 289, 1)',
   },
 });

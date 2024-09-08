@@ -1,6 +1,6 @@
 import {Input, useTheme} from '@rneui/themed';
 import React, {useState} from 'react';
-import {StyleSheet, Text} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import {validateInput} from '../helpers/validateInput';
 
 type CustomInputProps = {
@@ -26,12 +26,9 @@ export const CustomInput = ({setInputValue, inputValue}: CustomInputProps) => {
   };
 
   return (
-    <>
+    <View style={styles.inputBox}>
       <Input
-        inputContainerStyle={{
-          ...styles.input,
-          borderBottomColor: theme.colors.secondary,
-        }}
+        style={styles.input}
         value={inputValue}
         onChangeText={value => onChangeInputValue(value)}
       />
@@ -40,16 +37,20 @@ export const CustomInput = ({setInputValue, inputValue}: CustomInputProps) => {
           {validationError}
         </Text>
       )}
-    </>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  input: {
-    borderWidth: 0,
-    borderBottomWidth: 1,
-  },
   errorText: {
     marginBottom: 20,
+  },
+  input: {
+    marginVertical: 20,
+    paddingVertical: 20,
+  },
+  inputBox: {
+    width: 300,
+    borderWidth: 0,
   },
 });
