@@ -10,6 +10,7 @@ import {getWeatherByCity} from '../api';
 import {OutlinedButton} from '../components/OutlinedButton';
 import {useTemperatureUnits} from '../hooks/useTemperatureUnits';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useErrors} from '../hooks/useErrors';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Main Screen'>;
 
@@ -20,6 +21,7 @@ export const MainScreen: React.FC<Props> = ({navigation}) => {
   const {theme} = useTheme();
 
   const {setTemperatureUnit, temperatureUnit} = useTemperatureUnits();
+  const {setErrorMessage, toggleErrorsBox} = useErrors();
 
   useEffect(() => {
     const getDataFromStorage = async () => {
@@ -66,6 +68,13 @@ export const MainScreen: React.FC<Props> = ({navigation}) => {
           const updatedCities = [...favouriteCities, inputValue];
           setFavouriteCities(updatedCities);
           saveCitiesInStorage(updatedCities);
+        } else {
+          setErrorMessage(
+            'There is no such a city as: ' +
+              inputValue +
+              '. Please type a valid city name',
+          );
+          toggleErrorsBox();
         }
       });
     }

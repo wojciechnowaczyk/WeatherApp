@@ -11,14 +11,19 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {ThemeProvider} from '@rneui/themed';
 import {theme} from './src/theme';
 import {TemperatureUnitsProvider} from './src/hooks/useTemperatureUnits';
+import {ErrorsProvider} from './src/hooks/useErrors';
+import {ErrorMessage} from './src/components/ErrorMessage';
 
 function App(): React.JSX.Element {
   return (
     <SafeAreaProvider>
       <ThemeProvider theme={theme}>
-        <TemperatureUnitsProvider>
-          <MainStack />
-        </TemperatureUnitsProvider>
+        <ErrorsProvider>
+          <TemperatureUnitsProvider>
+            <ErrorMessage />
+            <MainStack />
+          </TemperatureUnitsProvider>
+        </ErrorsProvider>
       </ThemeProvider>
     </SafeAreaProvider>
   );
