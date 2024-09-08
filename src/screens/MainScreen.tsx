@@ -38,9 +38,6 @@ export const MainScreen: React.FC<Props> = ({navigation}) => {
     getDataFromStorage();
   }, []);
 
-  useEffect(() => {
-    console.log(inputValue);
-  }, [inputValue]);
   const saveCitiesInStorage = async (updatedCities: string[]) => {
     try {
       const parsedValue = JSON.stringify(updatedCities);
@@ -79,6 +76,9 @@ export const MainScreen: React.FC<Props> = ({navigation}) => {
           toggleErrorsBox();
         }
       });
+    } else {
+      setErrorMessage(locales.CITY_ALREADY_EXISTS);
+      toggleErrorsBox();
     }
   };
 
@@ -115,7 +115,7 @@ export const MainScreen: React.FC<Props> = ({navigation}) => {
         title={locales.ADD_AS_FAVOURITE}
         onPress={handleAddFavouritesBtn}
       />
-      <Text>{locales.FAVOURITE_CITIES}</Text>
+      <Text h3>{locales.FAVOURITE_CITIES}</Text>
       <FlatList
         data={favouriteCities}
         keyExtractor={index => index.toString()}
