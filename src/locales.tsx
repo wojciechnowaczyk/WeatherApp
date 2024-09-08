@@ -9,4 +9,5 @@ export const locales = {
   TEMP_UNIT_C: 'C',
   TEMP_UNIT_F: 'F',
   FAVOURITE_CITIES: 'Favourite Cities:',
+  ONLY_LETTERS_ALLOWED: 'Only letters are allowed',
 };

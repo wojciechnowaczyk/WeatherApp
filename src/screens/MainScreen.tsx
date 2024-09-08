@@ -5,12 +5,12 @@ import {RootStackParamList} from '../models/navigation';
 import {CustomButton} from '../components/CustomButton';
 import {Text, useTheme, Input, Button} from '@rneui/themed';
 import {locales} from '../locales';
-import {CustomTheme} from '../models/theme';
 import {getWeatherByCity} from '../api';
 import {OutlinedButton} from '../components/OutlinedButton';
 import {useTemperatureUnits} from '../hooks/useTemperatureUnits';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useErrors} from '../hooks/useErrors';
+import {CustomInput} from '../components/CustomInput';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Main Screen'>;
 
@@ -38,6 +38,9 @@ export const MainScreen: React.FC<Props> = ({navigation}) => {
     getDataFromStorage();
   }, []);
 
+  useEffect(() => {
+    console.log(inputValue);
+  }, [inputValue]);
   const saveCitiesInStorage = async (updatedCities: string[]) => {
     try {
       const parsedValue = JSON.stringify(updatedCities);
@@ -50,15 +53,14 @@ export const MainScreen: React.FC<Props> = ({navigation}) => {
   };
 
   const handleNextBtn = (city?: string) => {
-    getWeatherByCity(city ? city : inputValue, temperatureUnit).then(
-      weatherData => {
-        if (weatherData) {
-          navigation.navigate('Weather Details Screen', {
-            weatherData,
-          });
-        }
-      },
-    );
+    const cityToSend = city ? city : inputValue;
+    getWeatherByCity(cityToSend, temperatureUnit).then(weatherData => {
+      if (weatherData) {
+        navigation.navigate('Weather Details Screen', {
+          weatherData,
+        });
+      }
+    });
   };
 
   const handleAddFavouritesBtn = () => {
@@ -107,14 +109,8 @@ export const MainScreen: React.FC<Props> = ({navigation}) => {
     <View style={styles.container(theme)}>
       <Text h2>{locales.APP_TITLE}</Text>
       <Text>{locales.PLEASE_ENTER_A_CITY}</Text>
-      <Input
-        // errorStyle={{color: 'red'}}
-        // errorMessage={locales.ENTER_VALID_CITY_NAME}
-        inputContainerStyle={styles.input(theme)}
-        onChangeText={value => setInputValue(value)}
-        // renderErrorMessage={true}
-      />
-      <CustomButton title={locales.NEXT} onPress={handleNextBtn} />
+      <CustomInput inputValue={inputValue} setInputValue={setInputValue} />
+      <CustomButton title={locales.NEXT} onPress={() => handleNextBtn()} />
       <CustomButton
         title={locales.ADD_AS_FAVOURITE}
         onPress={handleAddFavouritesBtn}
@@ -147,11 +143,6 @@ const styles = {
     flex: 1,
     backgroundColor: theme.colors.background,
     padding: 20,
-  }),
-  input: (theme: CustomTheme) => ({
-    borderWidth: 0,
-    borderBottomWidth: 1,
-    borderBottomColor: 'black',
   }),
   row: {
     display: 'flex',
