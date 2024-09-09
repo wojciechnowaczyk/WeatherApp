@@ -1,5 +1,5 @@
 import {View, ViewStyle} from 'react-native';
-import React, {useEffect} from 'react';
+import React from 'react';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../models/navigation';
 import {locales} from '../locales';

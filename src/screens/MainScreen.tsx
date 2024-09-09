@@ -89,6 +89,7 @@ export const MainScreen: React.FC<Props> = ({navigation}) => {
   };
 
   const renderFavCities = ({item}: {item: string}) => (
+    // @ts-ignore
     <View style={styles.listItem}>
       <Button
         containerStyle={styles.listItemEl}
@@ -116,6 +117,7 @@ export const MainScreen: React.FC<Props> = ({navigation}) => {
         keyExtractor={index => index.toString()}
         renderItem={renderFavCities}
       />
+      {/* //ts ignore */}
       <View style={styles.row}>
         <Text>{locales.SET_TEMP_UNITS}</Text>
         <OutlinedButton

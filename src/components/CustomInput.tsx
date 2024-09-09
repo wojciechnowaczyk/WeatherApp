@@ -28,7 +28,8 @@ export const CustomInput = ({setInputValue, inputValue}: CustomInputProps) => {
   return (
     <View style={styles.inputBox}>
       <Input
-        style={styles.input}
+        inputStyle={styles.input}
+        inputContainerStyle={styles.container}
         value={inputValue}
         onChangeText={value => onChangeInputValue(value)}
       />
@@ -51,6 +52,8 @@ const styles = StyleSheet.create({
   },
   inputBox: {
     width: 300,
-    borderWidth: 0,
+  },
+  container: {
+    borderBottomWidth: 0,
   },
 });

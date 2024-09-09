@@ -1,3 +1,4 @@
+// @ts-ignore
 import {WEATHER_API_KEY} from '@env';
 import {TempUnits, Weather} from './models/weather';
 
