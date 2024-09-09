@@ -10,7 +10,9 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 export const MainStack: React.FC = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Main Screen">
+      <Stack.Navigator
+        initialRouteName="Main Screen"
+        screenOptions={{headerShown: false}}>
         <Stack.Screen name="Main Screen" component={MainScreen} />
         <Stack.Screen
           name="Weather Details Screen"
