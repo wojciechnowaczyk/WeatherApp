@@ -5,7 +5,8 @@ I know that this application is not the prettiest app ever but I focused rather 
 - Ive added handling errors in a Dialog window.
 - Ive added an Async Storage library - when the component is mounting the component checks if there is already a list of favourite cities in the async storage - if it is it is displaying the list.
 - Splash Screen added on Android platform
-- Tests - didnt have time to solve all the configurations problems with babel and ts, Ive just added a few sample tests in jest. 
+- Tests - didnt have time to solve all the configurations problems with babel and ts, Ive just added a few sample tests in jest.
+- I know that the .env file shouldnt be commited here but since it is a training app Ive added this file to make testing for external useres easier. 
 
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
