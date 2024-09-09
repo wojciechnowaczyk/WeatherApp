@@ -1,3 +1,12 @@
+I know that this application is not the prettiest app ever but I focused rather on the funcionalities than on the design itself. The app includes:
+- React Native Elements library - a library for components
+- TS
+- Ive added a hook funcionality that allows user to choose between C or F temperature units
+- Ive added handling errors in a Dialog window.
+- Ive added an Async Storage library - when the component is mounting the component checks if there is already a list of favourite cities in the async storage - if it is it is displaying the list.
+- Splash Screen added on Android platform
+- Tests - didnt have time to solve all the configurations problems with babel and ts, Ive just added a few sample tests in jest. 
+
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
 # Getting Started
