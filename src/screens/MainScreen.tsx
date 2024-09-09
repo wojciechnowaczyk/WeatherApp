@@ -140,12 +140,10 @@ const styles = {
     padding: 20,
   }),
   row: {
-    display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
   },
   listItem: {
-    display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',

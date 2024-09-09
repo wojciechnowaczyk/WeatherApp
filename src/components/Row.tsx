@@ -18,7 +18,6 @@ export const Row = ({icon, description}: RowProps) => {
 
 const styles = StyleSheet.create({
   row: {
-    display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     marginTop: 20,
